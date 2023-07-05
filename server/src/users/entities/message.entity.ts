@@ -7,7 +7,7 @@ export class Message extends Document {
   @Prop({ required: true })
   content: string;
 
-  @Prop({ type: Types.ObjectId, ref: User.name })
+  @Prop({ type: Types.ObjectId, ref: 'User' })
   sender: User | Types.ObjectId;
 
   @Prop({ required: true, default: Date.now })

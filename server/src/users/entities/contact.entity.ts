@@ -5,10 +5,10 @@ import { Chat } from './chat.entity';
 
 @Schema()
 export class Contact extends Document {
-  @Prop({ type: [{ type: Types.ObjectId, ref: User.name }] })
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }] })
   contact: User | Types.ObjectId;
 
-  @Prop({ required: true, ref: Chat.name })
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'Chat' }] })
   chat: Chat | Types.ObjectId;
 }
 

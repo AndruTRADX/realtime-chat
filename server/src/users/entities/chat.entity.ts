@@ -8,7 +8,7 @@ export class Chat extends Document {
   @Prop({ type: [{ type: MessageSchema, default: [] }] })
   messages: Message[];
 
-  @Prop({ type: [{ type: Types.ObjectId, ref: User.name }] })
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }] })
   participants: User[];
 }
 
