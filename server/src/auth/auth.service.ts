@@ -8,12 +8,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User } from '../users/entities/user.entity';
 import { CreateUserDto } from 'src/users/dtos/user.dto';
 import { Model } from 'mongoose';
+import { google } from 'googleapis';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private jwtService: JwtService,
     @InjectModel(User.name) private userModel: Model<User>,
+    private jwtService: JwtService,
   ) {}
 
   generateJwt(payload) {
@@ -28,7 +29,7 @@ export class AuthService {
     const userExists = await this.findUserByEmail(user.email);
 
     if (!userExists) {
-      return this.registerUser(user);
+      return this.registerUser();
     }
 
     return this.generateJwt({
@@ -37,10 +38,20 @@ export class AuthService {
     });
   }
 
-  async registerUser(user: CreateUserDto) {
-    try {
-      const newUser = new this.userModel(user);
+  async registerUser() {
+    const client = new google.auth.OAuth2();
+    const googleAuth = google.oauth2('v2');
+    const { data } = await googleAuth.userinfo.get({ auth: client });
 
+    try {
+      const createUserDto: CreateUserDto = {
+        username: data.name,
+        email: data.email,
+        avatarURL: data.picture,
+        googleId: data.id,
+      };
+
+      const newUser = new this.userModel(createUserDto);
       await newUser.save();
 
       return this.generateJwt({
