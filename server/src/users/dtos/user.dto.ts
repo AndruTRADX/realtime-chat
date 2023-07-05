@@ -13,6 +13,9 @@ export class CreateUserDto {
   @IsString()
   @IsUrl()
   readonly avatarURL: string;
+
+  @IsString()
+  readonly googleId: string;
 }
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {}
