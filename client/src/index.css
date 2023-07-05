@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-gradient { 
+  background: linear-gradient(83.84deg, #6936F5 -6.87%, #C13FF5 26.54%, #FF5C87 58.58%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-03 {
+  position: absolute;
+  width: 404px;
+  height: 800px;
+  right: 20%;
+  top: 5%;
+
+  background: rgba(105, 54, 245, 0.2);
+  filter: blur(175px);
+  transform: rotate(-114.2deg);
+}
+
+.border-message-received {
+  border-radius: 12px 12px 12px 0px;
+}
+
+.border-message-send {
+  border-radius: 12px 12px 0px 12px;
+}
+
+/* Form Contacts */
+.form_contacts-input {
+  @apply w-full outline-0 bg-gray-100 rounded-xl p-3 text-sm font-semibold text-gray-800 placeholder:text-gray-400;
+}
+
+.chat-textarea {
+  @apply w-full outline-0 border border-gray-200 min-h-[46px] max-h-[90px] rounded-xl p-3 text-sm font-normal text-gray-800 placeholder:text-gray-400;
+}
+
+.contact_modal-input {
+  @apply w-full outline-0 border border-gray-200 min-h-[46px] max-h-[90px] max-w-[300px] rounded-xl p-3 text-sm font-medium text-gray-600 placeholder:text-gray-400;
+}
+
+.scroll-bar {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db #f8fafc;
+}
+
+/* Estilos para motores WebKit con redondeo */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f9fafb; /* Color de fondo de la barra */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d1d5db; /* Color de la barra */
+  border-radius: 12px; /* Redondeo de la barra */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af; /* Color de la barra al pasar el cursor */
+}
