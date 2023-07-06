@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { PassportModule } from '@nestjs/passport';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
@@ -13,6 +14,7 @@ import config from './config/config';
       load: [config],
       isGlobal: true,
     }),
+    PassportModule.register({ session: true }),
     DatabaseModule,
     UsersModule,
     AuthModule,

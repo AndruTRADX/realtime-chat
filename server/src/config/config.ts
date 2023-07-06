@@ -10,9 +10,9 @@ export default registerAs('config', () => {
       url: process.env.MONGODB_URL,
     },
     google: {
-      clientID: process.env.GOOGLE_AUTH_CLIENT,
+      clientID: process.env.GOOGLE_AUTH_CLIENT_ID,
       clientSecret: process.env.GOOGLE_AUTH_SECRET,
-      callbackURL: process.env.DATABASE_PORT,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
     jwt: {
       secret: process.env.JWT_SECRET,
