@@ -13,9 +13,6 @@ export class User extends Document {
   @Prop()
   avatarURL: string;
 
-  @Prop({ unique: true })
-  googleId: string;
-
   @Prop({ type: [{ type: Types.ObjectId, ref: Contact.name }] })
   contacts: Contact[];
 }

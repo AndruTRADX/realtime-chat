@@ -1,17 +1,23 @@
-import { Controller, Get, UseGuards } from "@nestjs/common";
-import { GoogleAuthGuard } from "./guards/google.guard";
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { GoogleAuthGuard } from './guards/google.guard';
+import { AuthService } from './services/auth.service';
+import { Req } from '@nestjs/common/decorators';
 
 @Controller('auth')
 export class AuthController {
+  constructor(private authService: AuthService) {}
+
   @Get('login')
   @UseGuards(GoogleAuthGuard)
-  handleLogin() {
-    return { msg: 'Google Authentication'}
+  handleLogin(@Req() request) {
+    const session = this.authService.generateJwt(request.user)
+    return session;
   }
 
   @Get('callback/google')
   @UseGuards(GoogleAuthGuard)
-  handleRedirect() {
-    return { msg: 'Ok'}
+  handleRedirect(@Req() request) {
+    const session = this.authService.generateJwt(request.user)
+    return session;
   }
 }
