@@ -35,7 +35,6 @@ import { ChatController } from './controllers/chat.controller';
       },
     }),
   ],
-  exports: [UserService, ChatService, MessageService],
   providers: [ContactService, UserService, ChatService, MessageService],
   controllers: [ContactController, UserController, ChatController],
 })
