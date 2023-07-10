@@ -10,11 +10,15 @@ export class ContactController {
   constructor(private readonly contactService: ContactService) {}
 
   @Get()
-  getContacts() {}
+  async get(@Req() request) {
+    const accessToken = request.headers.authorization;
+    const userContacs = await this.contactService.getUserContacts(accessToken);
+    return userContacs;
+  }
 
   @Post()
   async create(@Req() request, @Body() createContactDto: CreateContactDto) {
-    const accessToken = request.headers.authorization.replace('Bearer ', '');
+    const accessToken = request.headers.authorization;
     const newContact = await this.contactService.createContact(
       accessToken,
       createContactDto.email,
