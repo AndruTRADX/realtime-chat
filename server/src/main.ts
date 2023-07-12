@@ -17,6 +17,10 @@ async function bootstrap() {
   );
 
   app.setGlobalPrefix('api');
+  app.enableCors({
+    origin: '*',
+    credentials: true,
+  });
   app.use(
     session({
       secret: process.env.JWT_SECRET,

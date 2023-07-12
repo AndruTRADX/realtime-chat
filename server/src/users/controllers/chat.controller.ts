@@ -1,8 +1,7 @@
-import { Controller, Get, Param, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { MongoIdPipe } from 'src/common/mongo-id.pipe';
 import { ChatService } from '../services/chat.service';
-import { request } from 'http';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('chat')

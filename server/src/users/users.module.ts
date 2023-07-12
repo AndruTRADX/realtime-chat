@@ -14,6 +14,7 @@ import { ConfigType } from '@nestjs/config';
 import { MessageService } from './services/message.service';
 import { UserController } from './controllers/user.controller';
 import { ChatController } from './controllers/chat.controller';
+import { ChatGateway } from './gateways/chat.gateway';
 
 @Module({
   imports: [
@@ -35,7 +36,7 @@ import { ChatController } from './controllers/chat.controller';
       },
     }),
   ],
-  providers: [ContactService, UserService, ChatService, MessageService],
+  providers: [ContactService, UserService, ChatService, MessageService, ChatGateway],
   controllers: [ContactController, UserController, ChatController],
 })
 export class UsersModule {}

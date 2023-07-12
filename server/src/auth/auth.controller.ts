@@ -10,14 +10,14 @@ export class AuthController {
   @Get('login')
   @UseGuards(GoogleAuthGuard)
   handleLogin(@Req() request) {
-    const session = this.authService.generateJwt(request.user)
+    const session = this.authService.generateJwt(request.user);
     return session;
   }
 
   @Get('callback/google')
   @UseGuards(GoogleAuthGuard)
-  handleRedirect(@Req() request) {
-    const session = this.authService.generateJwt(request.user)
+  handleGoogleLogin(@Req() request) {
+    const session = this.authService.generateJwt(request.user);
     return session;
   }
 }
